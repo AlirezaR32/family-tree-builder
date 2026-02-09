@@ -1,0 +1,173 @@
+{
+  "family_name": "خانواده نمونه",
+  "description": "یک خانواده چهار نسلی نمونه",
+  "people": [
+    {
+      "id": "p1",
+      "name": "احمد",
+      "gender": "male",
+      "birth_year": 1920,
+      "parents": [],
+      "children": ["p3", "p5"],
+      "spouse": "p2"
+    },
+    {
+      "id": "p2",
+      "name": "فاطمه",
+      "gender": "female",
+      "birth_year": 1925,
+      "parents": [],
+      "children": ["p3", "p5"],
+      "spouse": "p1"
+    },
+    {
+      "id": "p3",
+      "name": "حسن",
+      "gender": "male",
+      "birth_year": 1945,
+      "parents": ["p1", "p2"],
+      "children": ["p7", "p8"],
+      "spouse": "p4"
+    },
+    {
+      "id": "p4",
+      "name": "زهرا",
+      "gender": "female",
+      "birth_year": 1950,
+      "parents": [],
+      "children": ["p7", "p8"],
+      "spouse": "p3"
+    },
+    {
+      "id": "p5",
+      "name": "علی",
+      "gender": "male",
+      "birth_year": 1948,
+      "parents": ["p1", "p2"],
+      "children": ["p9", "p10"],
+      "spouse": "p6"
+    },
+    {
+      "id": "p6",
+      "name": "مریم",
+      "gender": "female",
+      "birth_year": 1952,
+      "parents": [],
+      "children": ["p9", "p10"],
+      "spouse": "p5"
+    },
+    {
+      "id": "p7",
+      "name": "محمد",
+      "gender": "male",
+      "birth_year": 1970,
+      "parents": ["p3", "p4"],
+      "children": ["p13", "p14"],
+      "spouse": "p11"
+    },
+    {
+      "id": "p8",
+      "name": "سارا",
+      "gender": "female",
+      "birth_year": 1972,
+      "parents": ["p3", "p4"],
+      "children": ["p15"],
+      "spouse": "p12"
+    },
+    {
+      "id": "p9",
+      "name": "رضا",
+      "gender": "male",
+      "birth_year": 1975,
+      "parents": ["p5", "p6"],
+      "children": [],
+      "spouse": null
+    },
+    {
+      "id": "p10",
+      "name": "نرگس",
+      "gender": "female",
+      "birth_year": 1978,
+      "parents": ["p5", "p6"],
+      "children": [],
+      "spouse": null
+    },
+    {
+      "id": "p11",
+      "name": "لیلا",
+      "gender": "female",
+      "birth_year": 1972,
+      "parents": [],
+      "children": ["p13", "p14"],
+      "spouse": "p7"
+    },
+    {
+      "id": "p12",
+      "name": "کامران",
+      "gender": "male",
+      "birth_year": 1970,
+      "parents": [],
+      "children": ["p15"],
+      "spouse": "p8"
+    },
+    {
+      "id": "p13",
+      "name": "امیر",
+      "gender": "male",
+      "birth_year": 1995,
+      "parents": ["p7", "p11"],
+      "children": [],
+      "spouse": null
+    },
+    {
+      "id": "p14",
+      "name": "نیلوفر",
+      "gender": "female",
+      "birth_year": 1998,
+      "parents": ["p7", "p11"],
+      "children": [],
+      "spouse": null
+    },
+    {
+      "id": "p15",
+      "name": "سینا",
+      "gender": "male",
+      "birth_year": 1997,
+      "parents": ["p8", "p12"],
+      "children": [],
+      "spouse": null
+    }
+  ],
+  "relationships": [
+    {
+      "type": "spouse",
+      "person1": "p1",
+      "person2": "p2",
+      "description": "احمد و فاطمه - جد و جده"
+    },
+    {
+      "type": "parent-child",
+      "parent": "p1",
+      "child": "p3",
+      "description": "احمد پدر حسن"
+    },
+    {
+      "type": "parent-child",
+      "parent": "p2",
+      "child": "p3",
+      "description": "فاطمه مادر حسن"
+    },
+    {
+      "type": "parent-child",
+      "parent": "p1",
+      "child": "p5",
+      "description": "احمد پدر علی"
+    },
+    {
+      "type": "parent-child",
+      "parent": "p2",
+      "child": "p5",
+      "description": "فاطمه مادر علی"
+    }
+  ]
+}
