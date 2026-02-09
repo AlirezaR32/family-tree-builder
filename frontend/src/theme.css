@@ -3,54 +3,48 @@
    ============================================ */
 
 :root {
-  /* رنگ‌های اصلی */
-  --primary-color: #3e6e31;
-  --primary-dark: #0a3306;
-  --primary-light: #9dc793;
-  
-  /* رنگ‌های فرعی */
-  --secondary-color: #5a7c4a;
-  --accent-color: #d4a373;
-  --warning-color: #d4a373;
-  --danger-color: #c85540;
-  
-  /* رنگ‌های جنسیت */
-  --gender-male: #3b82f6;
-  --gender-female: #ec4899;
-  
-  /* رنگ‌های روابط */
-  --relationship-parent-child: #5a7c4a;
-  --relationship-spouse: #c85540;
-  
-  /* رنگ‌های متن و پس‌زمینه */
-  --text-primary: #2a2a2a;
-  --text-secondary: #555555;
-  --text-tertiary: #777777;
-  --text-light: #ffffff;
-  
-  --bg-white: #f5f1e8;
-  --bg-light: #ede5d5;
-  --bg-lighter: #e3d9cc;
-  --bg-lightest: #d9cebc;
-  
-  /* رنگ‌های لبه و سایه */
-  --border-color: #d9cebc;
-  --border-light: #ede5d5;
-  --shadow-sm: 0 1px 2px rgba(62, 110, 49, 0.08);
-  --shadow-md: 0 4px 12px rgba(62, 110, 49, 0.12);
-  --shadow-lg: 0 10px 40px rgba(62, 110, 49, 0.15);
-  --shadow-xl: 0 8px 32px rgba(62, 110, 49, 0.15);
-  
-  /* Notification رنگ‌ها */
-  --notification-success: #5a7c4a;
-  --notification-error: #c85540;
-  --notification-warning: #d4a373;
-  --notification-info: #5a7c4a;
-  
-  /* رنگ‌های gradient */
-  --gradient-primary: linear-gradient(135deg, #3e6e31 0%, #5a7c4a 100%);
-  --gradient-success: linear-gradient(135deg, #5a7c4a 0%, #3e6e31 100%);
-  --gradient-error: linear-gradient(135deg, #c85540 0%, #a93d2a 100%);
+   /* رنگ‌های اصلی جدید */
+   --primary-color: #1A3263;
+   --secondary-color: #547792;
+   --accent-color: #FAB95B;
+   --background-color: #E8E2DB;
+
+   /* رنگ‌های فرعی */
+   --primary-dark: #14244a;
+   --primary-light: #547792;
+   --secondary-dark: #36506b;
+   --secondary-light: #7a9bb8;
+
+   /* رنگ‌های متن */
+   --text-primary: #1A3263;
+   --text-secondary: #547792;
+   --text-accent: #FAB95B;
+   --text-light: #ffffff;
+
+   /* رنگ‌های پس‌زمینه */
+   --bg-white: #E8E2DB;
+   --bg-light: #f5f1e8;
+   --bg-lighter: #faf8f5;
+   --bg-lightest: #ffffff;
+
+   /* رنگ‌های لبه و سایه */
+   --border-color: #547792;
+   --border-light: #E8E2DB;
+   --shadow-sm: 0 1px 2px rgba(26, 50, 99, 0.08);
+   --shadow-md: 0 4px 12px rgba(26, 50, 99, 0.12);
+   --shadow-lg: 0 10px 40px rgba(26, 50, 99, 0.15);
+   --shadow-xl: 0 8px 32px rgba(26, 50, 99, 0.15);
+
+   /* Notification رنگ‌ها */
+   --notification-success: #1A3263;
+   --notification-error: #c85540;
+   --notification-warning: #FAB95B;
+   --notification-info: #547792;
+
+   /* رنگ‌های gradient */
+   --gradient-primary: linear-gradient(135deg, #1A3263 0%, #547792 100%);
+   --gradient-accent: linear-gradient(135deg, #FAB95B 0%, #E8E2DB 100%);
+   --gradient-error: linear-gradient(135deg, #c85540 0%, #a93d2a 100%);
 }
 
 /* ============================================

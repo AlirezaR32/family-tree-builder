@@ -1,0 +1,27 @@
+services:
+  # Backend Service (Flask API)
+  - type: web
+    name: family-tree-backend
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: PORT
+        value: "5000"
+    healthCheckPath: /api/health
+
+  # Frontend Service (React)
+  - type: web
+    name: family-tree-frontend
+    runtime: static
+    region: oregon
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://family-tree-backend.onrender.com/api
