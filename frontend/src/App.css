@@ -1,3 +1,5 @@
+@import './theme.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 body {
   font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   min-height: 100vh;
 }
 
@@ -62,12 +64,12 @@ body {
 }
 
 .notification.success {
-  background: #10b981;
+  background: var(--notification-success);
   color: white;
 }
 
 .notification.error {
-  background: #ef4444;
+  background: var(--notification-error);
   color: white;
 }
 
@@ -90,22 +92,22 @@ body {
 }
 
 .card {
-  background: white;
+  background: var(--bg-white);
   border-radius: 15px;
   padding: 25px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .card h2 {
-  color: #1f2937;
+  color: var(--text-primary);
   margin-bottom: 20px;
   font-size: 1.5em;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid var(--primary-color);
   padding-bottom: 10px;
 }
 
 .card h3 {
-  color: #374151;
+  color: var(--text-primary);
   margin: 20px 0 15px 0;
   font-size: 1.2em;
 }
@@ -117,7 +119,7 @@ body {
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #374151;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -125,17 +127,18 @@ body {
 .form-group select {
   width: 100%;
   padding: 12px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   font-size: 14px;
   transition: all 0.3s;
   font-family: inherit;
+  color: var(--text-primary);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
@@ -165,7 +168,7 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
   width: 100%;
 }
@@ -175,7 +178,7 @@ body {
 }
 
 .btn-secondary {
-  background: #10b981;
+  background: var(--accent-color);
   color: white;
   width: 100%;
 }
@@ -191,7 +194,7 @@ body {
 
 .empty-message {
   text-align: center;
-  color: #9ca3af;
+  color: var(--text-tertiary);
   padding: 20px;
   font-style: italic;
 }

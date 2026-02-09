@@ -1,0 +1,85 @@
+/* ============================================
+   تم رنگ یکپارچه برای کل پروژه
+   ============================================ */
+
+:root {
+  /* رنگ‌های اصلی */
+  --primary-color: #3e6e31;
+  --primary-dark: #0a3306;
+  --primary-light: #9dc793;
+  
+  /* رنگ‌های فرعی */
+  --secondary-color: #5a7c4a;
+  --accent-color: #d4a373;
+  --warning-color: #d4a373;
+  --danger-color: #c85540;
+  
+  /* رنگ‌های جنسیت */
+  --gender-male: #3b82f6;
+  --gender-female: #ec4899;
+  
+  /* رنگ‌های روابط */
+  --relationship-parent-child: #5a7c4a;
+  --relationship-spouse: #c85540;
+  
+  /* رنگ‌های متن و پس‌زمینه */
+  --text-primary: #2a2a2a;
+  --text-secondary: #555555;
+  --text-tertiary: #777777;
+  --text-light: #ffffff;
+  
+  --bg-white: #f5f1e8;
+  --bg-light: #ede5d5;
+  --bg-lighter: #e3d9cc;
+  --bg-lightest: #d9cebc;
+  
+  /* رنگ‌های لبه و سایه */
+  --border-color: #d9cebc;
+  --border-light: #ede5d5;
+  --shadow-sm: 0 1px 2px rgba(62, 110, 49, 0.08);
+  --shadow-md: 0 4px 12px rgba(62, 110, 49, 0.12);
+  --shadow-lg: 0 10px 40px rgba(62, 110, 49, 0.15);
+  --shadow-xl: 0 8px 32px rgba(62, 110, 49, 0.15);
+  
+  /* Notification رنگ‌ها */
+  --notification-success: #5a7c4a;
+  --notification-error: #c85540;
+  --notification-warning: #d4a373;
+  --notification-info: #5a7c4a;
+  
+  /* رنگ‌های gradient */
+  --gradient-primary: linear-gradient(135deg, #3e6e31 0%, #5a7c4a 100%);
+  --gradient-success: linear-gradient(135deg, #5a7c4a 0%, #3e6e31 100%);
+  --gradient-error: linear-gradient(135deg, #c85540 0%, #a93d2a 100%);
+}
+
+/* ============================================
+   استفاده شده در سایر فایل‌های CSS
+   ============================================
+   
+   رنگ‌های اصلی:
+   - --primary-color: برای دکمه‌ها و عناصر مهم
+   - --secondary-color: برای عناصر فرعی
+   - --accent-color: برای عناصر تاکیدی (موفق، تایید)
+   - --danger-color: برای خطا و حذف
+   
+   رنگ‌های متن:
+   - --text-primary: عنوان‌ها و متن اصلی
+   - --text-secondary: متن فرعی و توضیحات
+   - --text-tertiary: متن بسیار فرعی
+   
+   رنگ‌های پس‌زمینه:
+   - --bg-white: پس‌زمینه سفید اصلی
+   - --bg-light: پس‌زمینه روشن
+   - --bg-lighter: پس‌زمینه بسیار روشن
+   
+   سایه‌ها:
+   - --shadow-sm: سایه کوچک
+   - --shadow-md: سایه متوسط
+   - --shadow-lg: سایه بزرگ
+   
+   Gradients:
+   - --gradient-primary: gradient اصلی
+   - --gradient-success: gradient موفقیت
+   - --gradient-error: gradient خطا
+*/

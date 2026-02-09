@@ -11,25 +11,25 @@
 .type-btn {
   flex: 1;
   padding: 12px;
-  border: 2px solid #e5e7eb;
-  background: white;
+  border: 2px solid var(--border-color);
+  background: var(--bg-white);
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .type-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .type-btn.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-primary);
   color: white;
-  border-color: #667eea;
+  border-color: var(--primary-color);
 }
 
 .relationship-form {
@@ -41,7 +41,7 @@
 .arrow {
   text-align: center;
   font-size: 2em;
-  color: #667eea;
+  color: var(--primary-color);
   animation: pulse 2s ease-in-out infinite;
 }
 

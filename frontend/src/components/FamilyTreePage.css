@@ -1,17 +1,19 @@
+@import '../theme.css';
+
 .tree-container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--bg-white);
   border-radius: 8px;
   overflow: hidden;
 }
 
 .tree-header {
-  background: white;
+  background: var(--bg-white);
   padding: 15px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +22,7 @@
 
 .tree-header h3 {
   margin: 0;
-  color: #1f2937;
+  color: var(--text-primary);
   font-size: 18px;
 }
 
@@ -44,12 +46,12 @@
 }
 
 .legend-line.parent-child {
-  background: #3b82f6;
+  background: var(--relationship-parent-child);
 }
 
 .legend-line.spouse {
-  background: #ef4444;
-  border-top: 2px dashed #ef4444;
+  background: var(--relationship-spouse);
+  border-top: 2px dashed var(--relationship-spouse);
 }
 
 .loading,
@@ -60,7 +62,7 @@
   justify-content: center;
   flex: 1;
   gap: 15px;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .loading {
@@ -68,8 +70,8 @@
 }
 
 .spinner {
-  border: 3px solid #e5e7eb;
-  border-top: 3px solid #3b82f6;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   width: 35px;
   height: 35px;
@@ -87,13 +89,13 @@
 
 .empty-state h3 {
   margin: 10px 0 5px 0;
-  color: #374151;
+  color: var(--text-primary);
   font-size: 16px;
 }
 
 .empty-state p {
   margin: 5px 0;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .empty-state .hint {
@@ -103,28 +105,28 @@
 
 /* Custom Node Styles */
 .custom-node {
-  background: white;
-  border: 2px solid #ddd;
+  background: var(--bg-white);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
   padding: 10px;
   min-width: 130px;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s;
   font-size: 12px;
 }
 
 .custom-node:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   transform: scale(1.05);
 }
 
 .custom-node.male {
-  border-color: #3b82f6;
+  border-color: var(--gender-male);
 }
 
 .custom-node.female {
-  border-color: #ec4899;
+  border-color: var(--gender-female);
 }
 
 .node-icon {
@@ -140,27 +142,27 @@
 
 .node-name {
   font-weight: bold;
-  color: #1f2937;
+  color: var(--text-primary);
   font-size: 13px;
 }
 
 .node-id {
   font-size: 11px;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .node-year {
   font-size: 10px;
-  color: #9ca3af;
+  color: var(--text-tertiary);
 }
 
 /* ReactFlow Customization */
 .react-flow__minimap {
-  background-color: #f9fafb;
+  background-color: var(--bg-lighter);
 }
 
 .react-flow__controls {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .react-flow__attribution {

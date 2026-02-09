@@ -1,3 +1,5 @@
+@import '../theme.css';
+
 .person-manager {
   /* Inherits from .card */
 }
@@ -23,17 +25,17 @@
 }
 
 .people-grid::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--bg-lighter);
   border-radius: 4px;
 }
 
 .people-grid::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--border-color);
   border-radius: 4px;
 }
 
 .people-grid::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--text-tertiary);
 }
 
 .person-card {
@@ -41,14 +43,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: linear-gradient(135deg, var(--bg-lightest) 0%, var(--bg-lighter) 100%);
   border-radius: 10px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--border-light);
   transition: all 0.3s;
 }
 
 .person-card:hover {
-  border-color: #667eea;
+  border-color: var(--primary-color);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
   transform: translateX(-5px);
 }
@@ -62,35 +64,35 @@
 
 .person-icon {
   font-size: 2em;
-  background: white;
+  background: var(--bg-white);
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .person-info strong {
-  color: #1f2937;
+  color: var(--text-primary);
   font-size: 1.1em;
 }
 
 .person-id {
-  color: #6b7280;
+  color: var(--text-secondary);
   font-size: 0.85em;
   margin-right: 8px;
 }
 
 .birth-year {
-  color: #9ca3af;
+  color: var(--text-tertiary);
   font-size: 0.85em;
   margin-top: 4px;
 }
 
 .btn-delete {
-  background: #ef4444;
+  background: var(--danger-color);
   color: white;
   border: none;
   width: 40px;
