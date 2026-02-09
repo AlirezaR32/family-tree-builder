@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FamilyTreeVisualization from './components/FamilyTreeVisualization';
+import FamilyTreePage from './components/FamilyTreePage';
 import PersonManager from './components/PersonManager';
 import RelationshipManager from './components/RelationshipManager';
 import PathFinder from './components/PathFinder';
@@ -153,7 +153,7 @@ function App() {
         </div>
 
         <div className="right-panel">
-          <FamilyTreeVisualization 
+          <FamilyTreePage 
             people={people}
             loading={loading}
           />
