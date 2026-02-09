@@ -1,0 +1,55 @@
+.relationship-manager {
+  /* Inherits from .card */
+}
+
+.relationship-type-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: #6b7280;
+}
+
+.type-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.type-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.relationship-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.arrow {
+  text-align: center;
+  font-size: 2em;
+  color: #667eea;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

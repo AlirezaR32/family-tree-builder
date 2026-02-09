@@ -1,0 +1,223 @@
+.tree-container {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  height: 800px;
+  position: relative;
+}
+
+.tree-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tree-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.5em;
+}
+
+.legend {
+  display: flex;
+  gap: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+}
+
+.legend-line {
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legend-line.parent-child {
+  background: #4a90e2;
+}
+
+.legend-line.spouse {
+  background: #e74c3c;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #e74c3c,
+    #e74c3c 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+.loading,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-state {
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 5em;
+  margin-bottom: 20px;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.empty-state h3 {
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #6b7280;
+  margin: 5px 0;
+}
+
+.empty-state .hint {
+  color: #10b981;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+/* Custom Node Styles */
+.custom-node {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.custom-node.male {
+  border-color: #4a90e2;
+}
+
+.custom-node.female {
+  border-color: #e74c3c;
+}
+
+.custom-node:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.custom-node .node-icon {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.custom-node .node-content {
+  text-align: center;
+}
+
+.custom-node .node-name {
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.custom-node .node-id {
+  color: #6b7280;
+  font-size: 0.85em;
+  margin-bottom: 5px;
+}
+
+.custom-node .node-year {
+  color: #9ca3af;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+/* React Flow Overrides */
+.react-flow__minimap {
+  background: #f8fafc;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.react-flow__controls {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__controls button {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.react-flow__controls button:hover {
+  background: #f8fafc;
+}
+
+.react-flow__controls button svg {
+  fill: #667eea;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+@media (max-width: 768px) {
+  .tree-container {
+    height: 500px;
+  }
+  
+  .tree-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .custom-node {
+    min-width: 140px;
+    padding: 10px;
+  }
+  
+  .custom-node .node-icon {
+    font-size: 2em;
+  }
+}
