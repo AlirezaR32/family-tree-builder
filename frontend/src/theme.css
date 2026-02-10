@@ -3,48 +3,50 @@
    ============================================ */
 
 :root {
-   /* رنگ‌های اصلی جدید */
-   --primary-color: #1A3263;
-   --secondary-color: #547792;
-   --accent-color: #FAB95B;
-   --background-color: #E8E2DB;
+   /* پالت اصلی (Solid colors) */
+   --primary-color: #30364F; /* سرمه‌ای (اصلی) */
+   --secondary-color: #E1D9BC; /* کرم (ثانویه) */
+   --accent-color: #ACBAC4; /* آکسان خنثی */
+   --background-color: #30364F; /* پس‌زمینه صفحه */
 
-   /* رنگ‌های فرعی */
-   --primary-dark: #14244a;
-   --primary-light: #547792;
-   --secondary-dark: #36506b;
-   --secondary-light: #7a9bb8;
+   /* سایه‌ها و رنگ‌های فرعی */
+   --primary-dark: #23273a;
+   --primary-light: #4a5070;
+   --secondary-dark: #7d8a97;
+   --secondary-light: #d3dbe1;
 
-   /* رنگ‌های متن */
-   --text-primary: #1A3263;
-   --text-secondary: #547792;
-   --text-accent: #FAB95B;
+   /* متن */
+   --text-primary: #30364F;
+   --text-secondary: #7d8a97;
+   --text-accent: #ACBAC4;
    --text-light: #ffffff;
 
-   /* رنگ‌های پس‌زمینه */
-   --bg-white: #E8E2DB;
-   --bg-light: #f5f1e8;
-   --bg-lighter: #faf8f5;
+   /* پس‌زمینه‌ها */
+   --bg-white: #E1D9BC;
+   --bg-light: #F0F0DB;
+   --bg-lighter: #E8E2DB;
    --bg-lightest: #ffffff;
 
-   /* رنگ‌های لبه و سایه */
-   --border-color: #547792;
+   /* پس‌زمینهٔ باکس‌ها (کرم) */
+   --box-bg: #E1D9BC;
+
+   /* لبه و سایه */
+   --border-color: #ACBAC4;
    --border-light: #E8E2DB;
-   --shadow-sm: 0 1px 2px rgba(26, 50, 99, 0.08);
-   --shadow-md: 0 4px 12px rgba(26, 50, 99, 0.12);
-   --shadow-lg: 0 10px 40px rgba(26, 50, 99, 0.15);
-   --shadow-xl: 0 8px 32px rgba(26, 50, 99, 0.15);
+   --shadow-sm: 0 1px 2px rgba(48, 54, 79, 0.06);
+   --shadow-md: 0 4px 12px rgba(48, 54, 79, 0.10);
+   --shadow-lg: 0 10px 40px rgba(48, 54, 79, 0.12);
 
    /* Notification رنگ‌ها */
-   --notification-success: #1A3263;
-   --notification-error: #c85540;
-   --notification-warning: #FAB95B;
-   --notification-info: #547792;
+   --notification-success: #30364F;
+   --notification-error: #AC3B3B;
+   --notification-warning: #E1D9BC;
+   --notification-info: #ACBAC4;
 
-   /* رنگ‌های gradient */
-   --gradient-primary: linear-gradient(135deg, #1A3263 0%, #547792 100%);
-   --gradient-accent: linear-gradient(135deg, #FAB95B 0%, #E8E2DB 100%);
-   --gradient-error: linear-gradient(135deg, #c85540 0%, #a93d2a 100%);
+   /* نگه داشتن نام‌های قبلی ولی به صورت رنگ‌های ثابت (بدون گرادیان) */
+   --gradient-primary: var(--background-color);
+   --gradient-accent: var(--accent-color);
+   --gradient-error: var(--notification-error);
 }
 
 /* ============================================

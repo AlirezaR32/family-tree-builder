@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--gradient-primary);
+  background: var(--background-color);
   min-height: 100vh;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 
 .card {
-  background: var(--bg-white);
+  background: var(--box-bg);
   border-radius: 15px;
   padding: 25px;
   box-shadow: var(--shadow-lg);
@@ -174,17 +174,20 @@ body {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+  /* background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%); */
+  background-color: var(--primary-light);
+
 }
 
 .btn-secondary {
   background: var(--accent-color);
-  color: white;
+  color: var(--text-primary);
   width: 100%;
 }
 
 .btn-secondary:hover {
-  background: #059669;
+  background: var(--primary-dark);
+  color: var(--text-accent);
 }
 
 .controls-section {
