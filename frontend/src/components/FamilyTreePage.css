@@ -156,6 +156,18 @@
   color: var(--text-tertiary);
 }
 
+.marriage-node {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff0f3;
+  border: 2px solid #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
 /* ReactFlow Customization */
 .react-flow__minimap {
   background-color: var(--bg-lighter);
