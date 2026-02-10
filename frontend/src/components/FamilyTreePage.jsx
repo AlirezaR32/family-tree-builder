@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -14,11 +14,14 @@ import './FamilyTreePage.css';
 
 const nodeTypes = {
   person: PersonNode,
+  marriage: MarriageNode,
 };
 
 function PersonNode({ data }) {
   return (
     <div className={`custom-node ${data.gender}`}>
+      <Handle type="source" position={Position.Left} id="spouse-left" />
+      <Handle type="source" position={Position.Right} id="spouse-right" />
       <Handle type="target" position={Position.Top} />
       <div className="node-icon">
         {data.gender === 'male' ? '👨' : '👩'}
@@ -35,6 +38,17 @@ function PersonNode({ data }) {
   );
 }
 
+function MarriageNode() {
+  return (
+    <div className="marriage-node">
+      <Handle type="target" position={Position.Left} id="left" />
+      <Handle type="target" position={Position.Right} id="right" />
+      <Handle type="source" position={Position.Bottom} id="bottom" />
+      <span>💕</span>
+    </div>
+  );
+}
+
 function FamilyTreePage({ people, loading }) {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -46,15 +60,16 @@ function FamilyTreePage({ people, loading }) {
       return;
     }
 
-    const newNodes = generateNodes(people);
-    const newEdges = generateEdges(people);
+    const { nodes: newNodes, edges: newEdges } = generateGraph(people);
 
     setNodes(newNodes);
     setEdges(newEdges);
   }, [people, setNodes, setEdges]);
 
-  const generateNodes = (people) => {
-    if (people.length === 0) return [];
+  const generateGraph = (people) => {
+    if (people.length === 0) {
+      return { nodes: [], edges: [] };
+    }
 
     const generations = calculateGenerations(people);
     const generationGroups = {};
@@ -68,6 +83,8 @@ function FamilyTreePage({ people, loading }) {
     });
 
     const nodes = [];
+    const marriageNodes = [];
+    const marriageMap = new Map();
     const verticalSpacing = 220;
     const horizontalSpacing = 200;
     const spouseSpacing = 120;
@@ -136,6 +153,21 @@ function FamilyTreePage({ people, loading }) {
               },
             });
 
+            const sortedCouple = [person1.id, person2.id].sort();
+            const marriageId = `marriage-${sortedCouple[0]}-${sortedCouple[1]}`;
+            marriageMap.set(`${sortedCouple[0]}-${sortedCouple[1]}`, marriageId);
+            marriageNodes.push({
+              id: marriageId,
+              type: 'marriage',
+              draggable: false,
+              selectable: false,
+              position: {
+                x: currentX + spouseSpacing / 2,
+                y: genIndex * verticalSpacing + 45,
+              },
+              data: {},
+            });
+
             currentX += spouseSpacing + horizontalSpacing;
           } else {
             const person = group[0];
@@ -160,7 +192,12 @@ function FamilyTreePage({ people, loading }) {
         });
       });
 
-    return nodes;
+    const edges = generateEdges(people, marriageMap);
+
+    return {
+      nodes: [...nodes, ...marriageNodes],
+      edges,
+    };
   };
 
   const calculateGenerations = (people) => {
@@ -202,41 +239,85 @@ function FamilyTreePage({ people, loading }) {
     return generations;
   };
 
-  const generateEdges = (people) => {
+  const generateEdges = (people, marriageMap) => {
     const edges = [];
     const processedSpouses = new Set();
+    const processedChildren = new Set();
 
     people.forEach(person => {
-      // رابطه والد-فرزند
-      if (person.children && person.children.length > 0) {
-        person.children.forEach(childId => {
-          edges.push({
-            id: `parent-child-${person.id}-${childId}`,
-            source: person.id,
-            target: childId,
-            type: 'smoothstep',
-            animated: false,
-            style: {
-              stroke: '#3b82f6',
-              strokeWidth: 3,
-            },
-            markerEnd: {
-              type: MarkerType.ArrowClosed,
-              color: '#3b82f6',
-              width: 30,
-              height: 30,
-            },
-            data: {
-              type: 'parent-child',
-            },
-          });
-        });
-      }
-
       // رابطه همسری
       if (person.spouse && !processedSpouses.has(`${person.id}-${person.spouse}`)) {
         processedSpouses.add(`${person.id}-${person.spouse}`);
         processedSpouses.add(`${person.spouse}-${person.id}`);
+
+        const sortedCouple = [person.id, person.spouse].sort();
+        const marriageId = marriageMap.get(`${sortedCouple[0]}-${sortedCouple[1]}`);
+
+        if (marriageId) {
+          edges.push({
+            id: `spouse-link-${person.id}-${marriageId}`,
+            source: person.id,
+            sourceHandle: 'spouse-right',
+            target: marriageId,
+            targetHandle: 'left',
+            type: 'straight',
+            animated: true,
+            style: {
+              stroke: '#ef4444',
+              strokeWidth: 3,
+              strokeDasharray: '8 4',
+            },
+          });
+
+          edges.push({
+            id: `spouse-link-${person.spouse}-${marriageId}`,
+            source: person.spouse,
+            sourceHandle: 'spouse-left',
+            target: marriageId,
+            targetHandle: 'right',
+            type: 'straight',
+            animated: true,
+            style: {
+              stroke: '#ef4444',
+              strokeWidth: 3,
+              strokeDasharray: '8 4',
+            },
+          });
+
+          const spouse = people.find(p => p.id === person.spouse);
+          const coupleChildren = new Set([
+            ...(person.children || []),
+            ...(spouse?.children || []),
+          ]);
+
+          coupleChildren.forEach(childId => {
+            processedChildren.add(`${person.id}-${childId}`);
+            processedChildren.add(`${person.spouse}-${childId}`);
+
+            edges.push({
+              id: `parent-child-${marriageId}-${childId}`,
+              source: marriageId,
+              sourceHandle: 'bottom',
+              target: childId,
+              type: 'smoothstep',
+              animated: false,
+              style: {
+                stroke: '#3b82f6',
+                strokeWidth: 3,
+              },
+              markerEnd: {
+                type: MarkerType.ArrowClosed,
+                color: '#3b82f6',
+                width: 30,
+                height: 30,
+              },
+              data: {
+                type: 'parent-child',
+              },
+            });
+          });
+          return;
+        }
 
         edges.push({
           id: `spouse-${person.id}-${person.spouse}`,
@@ -259,12 +340,37 @@ function FamilyTreePage({ people, loading }) {
             fill: 'white',
             fillOpacity: 0.9,
           },
-          markerEnd: {
-            type: MarkerType.ArrowClosed,
-            color: '#ef4444',
-            width: 25,
-            height: 25,
-          },
+          markerEnd: undefined,
+        });
+      }
+
+      // رابطه والد-فرزند (برای والدهای بدون نود ازدواج)
+      if (person.children && person.children.length > 0) {
+        person.children.forEach(childId => {
+          if (processedChildren.has(`${person.id}-${childId}`)) {
+            return;
+          }
+
+          edges.push({
+            id: `parent-child-${person.id}-${childId}`,
+            source: person.id,
+            target: childId,
+            type: 'smoothstep',
+            animated: false,
+            style: {
+              stroke: '#3b82f6',
+              strokeWidth: 3,
+            },
+            markerEnd: {
+              type: MarkerType.ArrowClosed,
+              color: '#3b82f6',
+              width: 30,
+              height: 30,
+            },
+            data: {
+              type: 'parent-child',
+            },
+          });
         });
       }
     });
