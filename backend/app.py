@@ -7,8 +7,17 @@ from flask_cors import CORS
 from family_tree import FamilyTree, Gender
 import json
 
+# app = Flask(__name__)
+# CORS(app)
+
+from flask_cors import CORS
+
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+    r"/api/*": {
+        "origins": "*"  # برای تست - بعداً محدود می‌کنیم
+    }
+})
 
 # ایجاد نمونه درخت خانوادگی
 family_tree = FamilyTree()
