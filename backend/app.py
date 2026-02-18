@@ -30,6 +30,16 @@ def get_all_people():
         return jsonify({"success": False, "error": str(e)}), 500
 
 
+@app.route('/api/people', methods=['DELETE'])
+def delete_all_people():
+    """حذف همه افراد"""
+    try:
+        family_tree.people.clear()
+        return jsonify({"success": True, "message": "تمام افراد حذف شدند"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
 @app.route('/api/person', methods=['POST'])
 def add_person():
     """افزودن فرد جدید"""

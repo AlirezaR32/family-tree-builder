@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PersonManager.css';
 
-function PersonManager({ people, onAddPerson, onDeletePerson }) {
+function PersonManager({ people, onAddPerson, onDeletePerson, onDeleteAll }) {
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -88,6 +88,18 @@ function PersonManager({ people, onAddPerson, onDeletePerson }) {
           ➕ افزودن فرد
         </button>
       </form>
+      
+      <div className="controls-section small">
+        <button
+          className="btn btn-danger"
+          onClick={() => {
+            if (!window.confirm('آیا از حذف همه افراد اطمینان دارید؟ این عملیات غیرقابل بازگشت است.')) return;
+            onDeleteAll && onDeleteAll();
+          }}
+        >
+          🧹 حذف همه افراد
+        </button>
+      </div>
 
       <div className="people-list">
         <h3>لیست افراد ({people.length} نفر)</h3>

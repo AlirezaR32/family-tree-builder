@@ -108,8 +108,8 @@ function FamilyTreeVisualization({ people, loading }) {
     });
 
     const nodes = [];
-    const verticalSpacing = 280;
-    const horizontalSpacing = 320;
+    const verticalSpacing = 320;
+    const horizontalSpacing = 360;
 
     // برای هر نسل
     Object.keys(generationGroups)
@@ -144,8 +144,9 @@ function FamilyTreeVisualization({ people, loading }) {
 
         couples.forEach((couple, index) => {
           if (couple.length === 2) {
-            // نود زوج
-            const coupleId = `couple-${couple[0].id}-${couple[1].id}`;
+            // نود زوج — شناسه زوج را با مرتب‌سازی ساختاری پایدار بسازید
+            const ids = [couple[0].id, couple[1].id].sort();
+            const coupleId = `couple-${ids.join('-')}`;
             nodes.push({
               id: coupleId,
               type: 'couple',
@@ -241,13 +242,14 @@ function FamilyTreeVisualization({ people, loading }) {
           let sourceId = person.id;
           let targetId = childId;
 
-          // اگر فرد جزء یک زوج باشد، از شناسه زوج استفاده کنید
+          // اگر فرد جزء یک زوج باشد، از شناسه زوج استفاده کنید (شناسه‌ها را مرتب‌سازی کن)
           const spouse = people.find(
             p => p.spouse === person.id && 
             generationMap[p.id] === generationMap[person.id]
           );
           if (spouse) {
-            sourceId = `couple-${Math.min(person.id, spouse.id)}-${Math.max(person.id, spouse.id)}`;
+            const ids = [person.id, spouse.id].sort();
+            sourceId = `couple-${ids.join('-')}`;
           }
 
           // اگر فرزند جزء یک زوج باشد
@@ -256,7 +258,8 @@ function FamilyTreeVisualization({ people, loading }) {
             generationMap[p.id] === generationMap[childId]
           );
           if (childSpouse) {
-            targetId = `couple-${Math.min(childId, childSpouse.id)}-${Math.max(childId, childSpouse.id)}`;
+            const ids = [childId, childSpouse.id].sort();
+            targetId = `couple-${ids.join('-')}`;
           }
 
           edges.push({

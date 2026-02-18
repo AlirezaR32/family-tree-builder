@@ -5,7 +5,7 @@ import RelationshipManager from './components/RelationshipManager';
 import PathFinder from './components/PathFinder';
 import './App.css';
 
-const API_BASE_URL = 'https://family-tree-builder-1.onrender.com/api';
+const API_BASE_URL = 'http://127.0.0.1:5000/api';
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -111,6 +111,24 @@ function App() {
     }
   };
 
+  const handleDeleteAll = async () => {
+    if (!window.confirm('آیا مطمئن هستید که می‌خواهید همه افراد را حذف کنید؟')) return;
+    try {
+      const response = await fetch(`${API_BASE_URL}/people`, {
+        method: 'DELETE',
+      });
+      const data = await response.json();
+      if (data.success) {
+        showNotification(data.message || 'تمام افراد حذف شدند');
+        fetchPeople();
+      } else {
+        showNotification(data.error || 'خطا در حذف همه افراد', 'error');
+      }
+    } catch (error) {
+      showNotification('خطا در حذف همه افراد: ' + error.message, 'error');
+    }
+  };
+
   return (
     <div className="app" dir="rtl">
       <header className="app-header">
@@ -139,6 +157,7 @@ function App() {
             people={people}
             onAddPerson={handleAddPerson}
             onDeletePerson={handleDeletePerson}
+            onDeleteAll={handleDeleteAll}
           />
 
           <RelationshipManager 
